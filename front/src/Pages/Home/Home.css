@@ -1,0 +1,16 @@
+
+
+.Home
+{
+    padding-top:80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Votes
+{
+    text-align: center;
+}
+

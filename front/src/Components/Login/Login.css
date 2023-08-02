@@ -1,0 +1,13 @@
+
+
+.Login
+{
+    width:85%;
+    height:70vh;
+    border:1px solid red;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #272829;
+    padding:20px;
+}

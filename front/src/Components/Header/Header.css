@@ -1,0 +1,33 @@
+
+
+header
+{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:40px;
+}
+
+.Title
+{
+    margin-top:30px;
+    font-size: 2rem;
+}
+
+.SubTitle
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    padding-top:20px;
+}
+.Timeout
+{
+    padding-top:20px;
+    font-size: 0.55rem;
+}
+

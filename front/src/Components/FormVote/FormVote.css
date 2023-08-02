@@ -1,0 +1,51 @@
+
+
+form
+{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top:40px;
+}
+
+input
+{
+    display: none;
+}
+label
+{
+    width:40%;
+    text-align: center;
+    padding:15px;
+    margin:10px;
+    border:2px solid gray;
+    border-radius:10px;
+}
+
+input[type="radio"]:checked + label
+{
+    background-color: mediumseagreen;
+    border:2px solid transparent;
+}
+
+.BVote
+{
+    text-transform: uppercase;
+    width:40%;
+    padding:15px;
+    margin-top:20px;
+    font-weight: bold;
+    border:none;
+    outline:none;
+}
+.BVote:hover
+{
+    background-color: mediumseagreen;
+    color:#FFF;
+    cursor: pointer;
+}
+
+
+

@@ -1,0 +1,48 @@
+
+
+.VoteBar
+{
+    width:87%;
+    height:60px;
+    border:2px solid #9F0D7F;
+    margin-top:30px;
+    line-height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.VoteBar__Item
+{
+    position:absolute;
+    height:58px;
+    width:50px;
+}
+
+.VoteBar__Item--Messi
+{
+    text-align: right;
+    right:0;
+    padding-right: 10px;
+    background-color: royalblue;
+}
+
+.VoteBar__Item--CR7
+{
+    text-align: left;
+    left:0;
+    padding-left: 10px;
+    background-color: mediumvioletred;
+}
+
+.GoatIcon
+{
+    position: absolute;
+    width:40px;
+    height:40px;
+    left:50%;
+    transform: translate(-50%, 0);
+}
+
