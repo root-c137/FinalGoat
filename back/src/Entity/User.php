@@ -27,8 +27,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToOne(mappedBy: 'User', cascade: ['persist', 'remove'])]
-    private ?Vote $vote = null;
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Player $Vote = null;
+
 
     public function getId(): ?int
     {
@@ -100,10 +101,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getVote(): ?Vote
-    {
-        return $this->vote;
-    }
+
 
     public function setVote(?Vote $vote): static
     {
@@ -121,4 +119,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getVote(): ?Player
+    {
+        return $this->Vote;
+    }
+
+
 }

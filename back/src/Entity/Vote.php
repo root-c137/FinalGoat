@@ -13,8 +13,7 @@ class Vote
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'vote', cascade: ['persist', 'remove'])]
-    private ?User $User = null;
+
 
     #[ORM\ManyToOne(inversedBy: 'votes')]
     private ?Player $Player = null;
