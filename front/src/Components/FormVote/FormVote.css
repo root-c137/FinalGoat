@@ -1,6 +1,6 @@
 
 
-form
+.FormVote
 {
     width:100%;
     display: flex;
@@ -10,11 +10,11 @@ form
     padding-top:40px;
 }
 
-input
+.FormVote input
 {
     display: none;
 }
-label
+.FormVote label
 {
     width:40%;
     text-align: center;
@@ -24,7 +24,7 @@ label
     border-radius:10px;
 }
 
-input[type="radio"]:checked + label
+.FormVote input[type="radio"]:checked + label
 {
     background-color: mediumseagreen;
     border:2px solid transparent;
