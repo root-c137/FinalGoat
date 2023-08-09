@@ -8,7 +8,7 @@ import {Login} from "../../Pages/Login/Login";
 import {Register} from "../../Pages/Register/Register";
 import {EasyFetch} from "../../Utils/EasyFetch";
 
-export const FormVote = () =>
+export const FormVote = ({refresh}) =>
 {
     const [currentPlayer, setCurrentPlayer] = useState(null);
     const Navigate = useNavigate();
@@ -16,8 +16,9 @@ export const FormVote = () =>
 
     useEffect(() =>
     {
+        console.log("effect..");
         setCurrentVote(localStorage.getItem("Cv") );
-    })
+    });
     const Vote = (e) =>
     {
         e.preventDefault();
@@ -35,6 +36,7 @@ export const FormVote = () =>
                 if(res.message === "Ok"){
                     localStorage.setItem("Cv", currentPlayer);
                     setCurrentVote(localStorage.getItem("Cv") );
+                    refresh();
                 }
             })
         }
@@ -49,7 +51,7 @@ export const FormVote = () =>
                            onClick={() => setCurrentPlayer("Messi")}>L.Messi
                         {localStorage.getItem("Cv") === "Messi" && <i className="fa-solid fa-check"></i>}
                     </label>
-                    <input type="radio" name="Choice" id="CR7"/>
+                    <input type="radio" name="Choice" id="CR7" />
                     <label htmlFor="CR7" className={`LabelRonaldo gradient-border ${CurrentVote === "Ronaldo" ? "CurrentVote" : ""}`}
                            onClick={() => setCurrentPlayer("Ronaldo")}>C.Ronaldo
                         {localStorage.getItem("Cv") === "Ronaldo" && <i className="fa-solid fa-check"></i>}

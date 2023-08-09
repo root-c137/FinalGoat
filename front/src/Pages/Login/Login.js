@@ -20,8 +20,8 @@ export const Login = () =>
         const URL = "api/login_check";
         const Method = "POST";
         const Data = {
-            username : Username,
-            password : Pass
+            "username" : Username,
+            "password" : Pass
         };
 
         if(Username.length === 0 || Pass.length === 0)
@@ -32,6 +32,7 @@ export const Login = () =>
                     setNotice("The username and/or password are incorrect.");
                 else
                 {
+                    console.log('log...');
                     localStorage.setItem("token", res.token);
                     fetchUser(res);
                 }
@@ -45,7 +46,9 @@ export const Login = () =>
         const Url = "api/user";
         const method = "GET";
 
+        console.log(res);
         EasyFetch(Url, null, method, res.token).then(res => {
+            console.log(res);
             localStorage.setItem("Username", res['data'].Username);
             localStorage.setItem("Email", res['data'].Email);
             localStorage.setItem("Cv", res['data'].Vote);

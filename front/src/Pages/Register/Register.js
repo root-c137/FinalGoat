@@ -73,7 +73,7 @@ export const Register = () => {
 
     return (
         <div className="RegisterAndLogin">
-            <h3>Create your account</h3>
+            <h3 className="RegisterAndLogin__Title">Create your account</h3>
 
             <Notice notice={notice}/>
 

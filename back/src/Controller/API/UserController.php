@@ -13,12 +13,16 @@ class UserController extends AbstractController
     #[Route('/api/user', name: 'app_a_p_i_user')]
     public function index(EntityManagerInterface $Manager): JsonResponse
     {
+        $V = $this->getUser()->getVote();
+        if($V)
+            $V = $V->getPlayer()->getLastName();
+
         $Data = [
             "Username" => $this->getUser()->getUsername(),
             "Email" => $this->getUser()->getEmail(),
-            "Vote" => $this->getUser()->getVote()->getPlayer()->getLastName()
+            "Vote" => $V
             ];
-        
+
         return $this->json([
             'data' => $Data
         ]);

@@ -4,7 +4,6 @@
 {
     width:87%;
     height:60px;
-    border:2px solid #9F0D7F;
     margin-top:30px;
     line-height: 60px;
     display: flex;
@@ -17,8 +16,8 @@
 .VoteBar__Item
 {
     position:absolute;
-    height:58px;
-    width:50px;
+    height:100%;
+    transition: width ease-in-out 1s;
 }
 
 .VoteBar__Item--Messi
@@ -32,7 +31,7 @@
 .VoteBar__Item--CR7
 {
     text-align: left;
-    left:0;
+    left:0px;
     padding-left: 10px;
     background-color: mediumvioletred;
 }
@@ -43,6 +42,41 @@
     width:40px;
     height:40px;
     left:50%;
+    z-index: 10;
     transform: translate(-50%, 0);
+}
+.GoatIcon:hover
+{
+    transform: scaleX(-1);
+    transition: transform ease-in 0.5s;
+}
+
+.Pourcent
+{
+    font-size: 0.66rem;
+    margin:10px;
+    z-index: 10;
+}
+.PlayerNumber
+{
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+.NumberAndPourcent
+{
+    position: absolute;
+    top:50%;
+    z-index: 100;
+    transform : translate(0, -50%);
+}
+
+.NumberAndPourcent--Left
+{
+    left:10px;
+}
+.NumberAndPourcent--Right
+{
+    right:10px;
 }
 

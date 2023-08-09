@@ -73,17 +73,20 @@ class VoteController extends AbstractController
         ], $StatusCode);
     }
 
-    #[Route('/api/votes', name: 'votes')]
+    #[Route('/votes', name: 'votes')]
     public function Votes(): JsonResponse
     {
 
+        $StatusCode = 200;
         $VoteRepo = $this->Doc->getRepository(Vote::class);
         $Votes = $VoteRepo->findAll();
         $Data = count($Votes);
 
+
         return $this->json([
-            'message' => "le nombre total des votes a bien été récupéré.",
             'data' => $Data
-        ]);
+        ], $StatusCode);
     }
+
+
 }
