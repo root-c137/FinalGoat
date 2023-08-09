@@ -3,7 +3,8 @@ import {useState} from "react";
 import {EasyFetch} from "../../Utils/EasyFetch";
 import {Notice} from "../../Components/Notice/Notice";
 
-
+import "./Register.css";
+import {Link, useNavigate} from "react-router-dom";
 export const Register = () => {
 
     const [Username, setUsername] = useState("");
@@ -13,7 +14,7 @@ export const Register = () => {
     const [UsernameError, setUsernameError] = useState(false);
     const [EmailError, setEmailError] = useState(false);
     const [PassError, setPassError] = useState(false);
-
+    const Navigate = useNavigate();
 
     const handleClick = (e) =>
     {
@@ -49,14 +50,25 @@ export const Register = () => {
                     }break;
                 }
 
-                if(res.code === 200)
+                if(res.message === "Registration was successful !")
+                {
+                    console.log(res);
                     clearInput();
+                    localStorage.setItem("token", res.token);
+                    localStorage.setItem("Username", Username);
+                    localStorage.setItem("Email", Email);
+                    localStorage.setItem("Cv", null);
+
+                    Navigate("/");
+                }
             });
 
         }
         else
             setNotice("Tous les champs doivent être remplis.");
     }
+
+
 
     const clearCurrentError = () =>
     {
@@ -91,13 +103,15 @@ export const Register = () => {
                     onChange={e => {setEmail(e.target.value); e.currentTarget.className = "FormInput"}} value={Email}/>
                 </div>
                 <div className="FormGroup">
-                    <label className="FormLab" htmlFor="Pass">Password</label>
-                    <input className={PassError ? "FormInput CurrentError" : "FormInput"} type="text" name="Pass" id="Pass"
+                    <label className="FormLabel" htmlFor="Pass">Password</label>
+                    <input className={PassError ? "FormInput CurrentError" : "FormInput"} type="password" name="Pass" id="Pass"
                     onChange={e => { setPass(e.target.value); e.currentTarget.className = "FormInput"}} value={Pass}/>
                 </div>
 
                 <button className="Button" onClick={handleClick}>GO</button>
             </form>
+            <Link to="/login" className="BRegister">or login</Link>
+
         </div>
     )
 }

@@ -33,6 +33,8 @@
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .BReset

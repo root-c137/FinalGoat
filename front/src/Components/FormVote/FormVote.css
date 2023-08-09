@@ -47,11 +47,12 @@
     font-weight: bold;
     border:none;
     outline:none;
+    cursor: pointer;
 }
 .BVote:hover
 {
-    color:#FFF;
-    cursor: pointer;
+    color: #EEEDED;
+    background-color: #9F0D7F;
 }
 
 .CurrentVote

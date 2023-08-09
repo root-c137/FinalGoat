@@ -20,7 +20,7 @@ class Mail
                 [
                     'From' => [
                         'Email' => "hellot@finalgoat.com",
-                        'Name' => "finalgoat.com"
+                        'Name' => "FINAL GOAT"
                     ],
                     'To' => [
                         [

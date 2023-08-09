@@ -10,16 +10,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints as Assert;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+
 
 
 class RegisterController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function index(Request $Request, EntityManagerInterface $Manager, UserPasswordHasherInterface $Encoder): JsonResponse
+    public function index(Request $Request, EntityManagerInterface $Manager, UserPasswordHasherInterface $Encoder,
+                          JWTTokenManagerInterface $JWTManager): JsonResponse
     {
         $Data = $Request->toArray();
         $Msg = "Registration was successful !";
         $StatusCode = 200;
+        $Token = null;
 
         if(!empty($Data) && !empty($Data['Username']) && !empty($Data['Email'])
            && !empty($Data['Pass']) )
@@ -46,6 +50,7 @@ class RegisterController extends AbstractController
 
                             $Manager->persist($User);
                             $Manager->flush();
+                            $Token = $JWTManager->create($User);
                         }
                         else
                         {
@@ -77,7 +82,7 @@ class RegisterController extends AbstractController
         }
 
 
-        return $this->json(['message' => $Msg], $StatusCode);
+        return $this->json(['message' => $Msg, 'token' => $Token], $StatusCode);
     }
 
 

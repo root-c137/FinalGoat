@@ -9,6 +9,7 @@ import {Home} from "./Pages/Home/Home";
 import {Register} from "./Pages/Register/Register";
 import {Login} from "./Pages/Login/Login";
 import {Reset} from "./Pages/Reset/Reset";
+import {Footer} from "./Components/Footer/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
               <Route path="/register" element={<Register />}/>
               <Route path="/reset" element={<Reset/>}/>
           </Routes>
+          <Footer />
       </BrowserRouter>
 
   </React.StrictMode>

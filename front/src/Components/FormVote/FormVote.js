@@ -1,6 +1,5 @@
 
 import './FormVote.css';
-import './BorderAnimation.css';
 import {useEffect, useState} from "react";
 import {Navigate, useNavigate} from "react-router-dom";
 
@@ -16,7 +15,6 @@ export const FormVote = ({refresh}) =>
 
     useEffect(() =>
     {
-        console.log("effect..");
         setCurrentVote(localStorage.getItem("Cv") );
     });
     const Vote = (e) =>
@@ -47,13 +45,13 @@ export const FormVote = ({refresh}) =>
         <>
                 <form className="FormVote">
                     <input type="radio" name="Choice" id="Messi"/>
-                    <label htmlFor="Messi" className={`LabelMessi gradient-border ${CurrentVote === "Messi" ? "CurrentVote" : ""}`}
-                           onClick={() => setCurrentPlayer("Messi")}>L.Messi
+                    <label htmlFor="Messi" className={`LabelMessi ${currentPlayer === "Messi" ? "CurrentVote" : ""}`}
+                           onClick={() => setCurrentPlayer("Messi")}>10 L.Messi
                         {localStorage.getItem("Cv") === "Messi" && <i className="fa-solid fa-check"></i>}
                     </label>
                     <input type="radio" name="Choice" id="CR7" />
-                    <label htmlFor="CR7" className={`LabelRonaldo gradient-border ${CurrentVote === "Ronaldo" ? "CurrentVote" : ""}`}
-                           onClick={() => setCurrentPlayer("Ronaldo")}>C.Ronaldo
+                    <label htmlFor="CR7" className={`LabelRonaldo ${currentPlayer === "Ronaldo" ? "CurrentVote" : ""}`}
+                           onClick={() => setCurrentPlayer("Ronaldo")}>7 C.Ronaldo
                         {localStorage.getItem("Cv") === "Ronaldo" && <i className="fa-solid fa-check"></i>}
                     </label>
                     <button className="BVote" onClick={Vote}>Vote</button>

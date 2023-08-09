@@ -62,7 +62,7 @@ export const Reset = () =>
                     <p>Enter your email address to receive a link to change your password.</p>
                     <input type="text" name="Email" id="Email" placeholder="your email.."
                            onChange={e => setEmail(e.target.value)} />
-                    <button className="BReset" onClick={getCode}>Get a code</button>
+                    <button className="BReset" onClick={getCode}>Confirm</button>
             </>
             }
 
