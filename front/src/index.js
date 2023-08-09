@@ -7,7 +7,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Header} from "./Components/Header/Header";
 import {Home} from "./Pages/Home/Home";
 import {Register} from "./Pages/Register/Register";
-import {Login} from "./Components/Login/Login";
+import {Login} from "./Pages/Login/Login";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -24,22 +24,15 @@ class Vote
     #[ORM\Column]
     private ?\DateTimeImmutable $UpdatedAt = null;
 
+    #[ORM\OneToOne(mappedBy: 'Vote', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->User;
-    }
-
-    public function setUser(?User $User): static
-    {
-        $this->User = $User;
-
-        return $this;
-    }
 
     public function getPlayer(): ?Player
     {
@@ -73,6 +66,28 @@ class Vote
     public function setUpdatedAt(\DateTimeImmutable $UpdatedAt): static
     {
         $this->UpdatedAt = $UpdatedAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setVote(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getVote() !== $this) {
+            $user->setVote($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }

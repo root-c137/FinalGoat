@@ -16,10 +16,9 @@ class UserController extends AbstractController
         $Data = [
             "Username" => $this->getUser()->getUsername(),
             "Email" => $this->getUser()->getEmail(),
-            "Vote" => $this->getUser()->getVote()
+            "Vote" => $this->getUser()->getVote()->getPlayer()->getLastName()
             ];
-
-
+        
         return $this->json([
             'data' => $Data
         ]);

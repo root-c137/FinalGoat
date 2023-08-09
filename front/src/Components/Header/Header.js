@@ -1,7 +1,7 @@
 
 import './Header.css';
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {EasyFetch} from "../../Utils/EasyFetch";
 
 
@@ -35,6 +35,7 @@ export const Header = () => {
     const [Seconds, setSeconds] = useState("");
     const [Days, setDays] = useState("");
     const Username = localStorage.getItem("Username");
+    const Navigate = useNavigate();
 
     useEffect(() =>
     {
@@ -56,6 +57,8 @@ export const Header = () => {
         localStorage.removeItem("Username");
         localStorage.removeItem("Email");
         localStorage.removeItem("Vote");
+        localStorage.removeItem("Cv");
+        Navigate('/');
     }
 
     return(

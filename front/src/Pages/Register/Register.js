@@ -26,7 +26,7 @@ export const Register = () => {
             const Data = {
                 Username: Username,
                 Email: Email,
-                Pass: Pass,
+                Pass: Pass
             };
 
 

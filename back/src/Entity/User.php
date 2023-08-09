@@ -27,11 +27,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?Player $Vote = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $Email = null;
+
+    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Vote $Vote = null;
+
 
 
     public function getId(): ?int
@@ -106,27 +109,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
 
-    public function setVote(?Vote $vote): static
-    {
-        // unset the owning side of the relation if necessary
-        if ($vote === null && $this->vote !== null) {
-            $this->vote->setUser(null);
-        }
 
-        // set the owning side of the relation if necessary
-        if ($vote !== null && $vote->getUser() !== $this) {
-            $vote->setUser($this);
-        }
-
-        $this->vote = $vote;
-
-        return $this;
-    }
-
-    public function getVote(): ?Player
-    {
-        return $this->Vote;
-    }
 
     public function getEmail(): ?string
     {
@@ -136,6 +119,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $Email): static
     {
         $this->Email = $Email;
+
+        return $this;
+    }
+
+    public function getVote(): ?Vote
+    {
+        return $this->Vote;
+    }
+
+    public function setVote(?Vote $Vote): static
+    {
+        $this->Vote = $Vote;
 
         return $this;
     }

@@ -3,7 +3,7 @@ import './Login.css';
 import {Link} from "react-router-dom";
 import {EasyFetch} from "../../Utils/EasyFetch";
 import {useState} from "react";
-import {Notice} from "../Notice/Notice";
+import {Notice} from "../../Components/Notice/Notice";
 import { useNavigate } from "react-router-dom";
 
 
@@ -48,8 +48,7 @@ export const Login = () =>
         EasyFetch(Url, null, method, res.token).then(res => {
             localStorage.setItem("Username", res['data'].Username);
             localStorage.setItem("Email", res['data'].Email);
-            localStorage.setItem("Vote", res['data'].Vote);
-
+            localStorage.setItem("Cv", res['data'].Vote);
             navigate('/');
         });
     }
