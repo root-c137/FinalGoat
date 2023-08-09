@@ -30,6 +30,10 @@ export const Header = () => {
     const DayLimit = 3;
     const DateLimit = new Date("2024-08-03 00:00:00");
     const [DateDiff, setDateDiff] = useState("" );
+    const [Hours, setHours] = useState("");
+    const [Minutes, setMinutes] = useState("");
+    const [Seconds, setSeconds] = useState("");
+    const [Days, setDays] = useState("");
     const Username = localStorage.getItem("Username");
 
     useEffect(() =>
@@ -37,7 +41,11 @@ export const Header = () => {
         const D = new Date();
         setInterval(() => {
             const Diff = dateDiff(new Date(), DateLimit);
-            setDateDiff(Diff.day+" days "+Diff.hour+" hours "+Diff.min+" minutes "+Diff.sec+" seconds");
+
+            setDays(Diff.day.toString() );
+            setHours(Diff.hour.toString() );
+            setMinutes(Diff.min.toString() );
+            setSeconds(Diff.sec.toString() );
         }, 1000);
 
 
@@ -64,6 +72,22 @@ export const Header = () => {
 
             <h2 className="SubTitle">
                 <span>You still have :</span>
+                <div className="CountDown">
+                    <table>
+                        <tr className="CountDown__Table__Tr">
+                            <td className="CountDown__Table__Title">days</td>
+                            <td className="CountDown__Table__Title">hours</td>
+                            <td className="CountDown__Table__Title">minutes</td>
+                            <td className="CountDown__Table__Title">seconds</td>
+                        </tr>
+                        <tr className="CountDown__Table__Tr">
+                            <td className="CountDown__Table__Value">{Days}</td>
+                            <td className="CountDown__Table__Value">{Hours}</td>
+                            <td className="CountDown__Table__Value">{Minutes}</td>
+                            <td className="CountDown__Table__Value">{Seconds}</td>
+                        </tr>
+                    </table>
+                </div>
                 <span className="Timeout">{DateDiff}</span>
             </h2>
         </header>

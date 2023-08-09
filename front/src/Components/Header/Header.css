@@ -32,14 +32,7 @@ header
     font-size: 0.8rem;
     padding-top:20px;
 }
-.Timeout
-{
-    border:1px solid red;
-    width:100%;
-    padding-top:20px;
-    font-size: 0.6rem;
-    text-align: center;
-}
+
 
 .Right
 {
@@ -50,7 +43,6 @@ header
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border:1px solid red;
 }
 .Right__Username
 {
@@ -75,6 +67,29 @@ header
 {
     border:none;
     outline:none;
+}
+
+.CountDown table
+{
+    border-spacing: 7px;
+}
+.CountDown__Table__Title, .CountDown__Table__Value
+{
+   width:50px;
+   padding:10px;
+   text-align: center;
+   font-size: 0.7rem;
+   text-transform: none;
+}
+.CountDown__Table__Value
+{
+    background-color: #EEEDED;
+    border-radius: 3px;
+    color: #272829;
+}
+.CountDown__Table__Title
+{
+    padding-bottom: 0;
 }
 
 @media screen and (min-width: 800px)
