@@ -1,0 +1,71 @@
+
+
+.Reset
+{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #EEEDED;
+    border-radius: 10px;
+    margin:auto;
+    padding:20px;
+    color: #272829;
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.Reset h3
+{
+    font-size: 0.9rem;
+}
+.Reset p
+{
+    font-size: 0.7rem;
+}
+
+.Reset input
+{
+    width:90%;
+    height:35px;
+    border:none;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+}
+
+.BReset
+{
+    width:150px;
+    padding:10px;
+    border:none;
+    outline:none;
+    background-color: #272829;
+    color: #EEEDED;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.BReset:hover
+{
+    background-color: #9F0D7F;
+}
+
+.Notice__Msg
+{
+    color:#9F0D7F;
+}
+
+.Reset .ResetPass
+{
+    margin:10px;
+    height:45px;
+}
+
+@media screen and (min-width: 800px)
+{
+    .Reset
+    {
+        width:550px;
+    }
+}

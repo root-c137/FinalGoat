@@ -75,6 +75,7 @@ export const Login = () =>
 
                 <button className="BLogin Button" onClick={handleClick}>Login</button>
             </form>
+            <Link className="MpResetLink" to="/reset">Forgot your password ?</Link>
 
             <Link to="/register" className="BRegister">or register</Link>
         </div>
