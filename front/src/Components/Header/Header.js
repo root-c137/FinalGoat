@@ -71,7 +71,7 @@ export const Header = () => {
             }
 
             <h2 className="SubTitle">
-                <span>You still have :</span>
+                <span>You still have</span>
                 <div className="CountDown">
                     <table>
                         <tr className="CountDown__Table__Tr">
