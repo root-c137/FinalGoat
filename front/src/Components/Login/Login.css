@@ -1,21 +1,21 @@
 
 
-.Login
+.RegisterAndLogin
 {
-    width:85%;
-    height:70vh;
-    position: absolute;
+    width:90%;
+    margin:auto;
     background-color: #fff;
     border-radius: 10px;
     color: #272829;
     padding:20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    border:1px solid red;
 }
 
-.FormLogin
+.Form
 {
     width:100%;
 
@@ -39,9 +39,15 @@
     border:1px solid green;
     padding-left: 10px;
     font-size: 1rem;
+    outline: none;
 }
 
-.BLogin
+.FormInput:focus
+{
+    border:1px solid #9F0D7F;
+}
+
+.Button
 {
     width:100%;
     padding:10px;
@@ -50,5 +56,44 @@
     outline: none;
     background-color: #272829;
     color: #EEEDED;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color ease-in 0.4s;
+}
+.Button:hover
+{
+    background-color: #9F0D7F;
 }
 
+.BRegister
+{
+    text-decoration: none;
+    color:#272829;
+    margin-top:40px;
+    font-size: 0.8rem;
+}
+.BRegister:hover
+{
+    color: #9F0D7F;
+}
+
+.CurrentError
+{
+    border:2px solid #9F0D7F;
+}
+
+@media screen and (min-width: 1000px)
+{
+    .RegisterAndLogin
+    {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1300px)
+{
+    .RegisterAndLogin
+    {
+        width: 600px;
+    }
+}

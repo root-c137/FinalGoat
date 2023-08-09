@@ -18,50 +18,66 @@ class RegisterController extends AbstractController
     public function index(Request $Request, EntityManagerInterface $Manager, UserPasswordHasherInterface $Encoder): JsonResponse
     {
         $Data = $Request->toArray();
-        $Msg = "l'inscription a bien été effectué.";
+        $Msg = "Registration was successful !";
         $StatusCode = 200;
 
         if(!empty($Data) && !empty($Data['Username']) && !empty($Data['Email'])
            && !empty($Data['Pass']) )
         {
+
             if(strlen($Data['Username']) >= 4 &&
             !preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $Data['Username']) )
             {
-                if(!filter_var($Data['Email'], FILTER_VALIDATE_EMAIL) === false)
+                $User = $Manager->getRepository(User::class)->findOneBy(['username' => $Data['Username'] ]);
+                $Email = $Manager->getRepository(User::class)->findOneBy(['Email' => $Data['Email'] ]);
+
+                if(!$User)
                 {
-                    $User = new User();
-                    $PassHash = $Encoder->hashPassword($User, $Data['Pass'] );
+                    if (!filter_var($Data['Email'], FILTER_VALIDATE_EMAIL) === false)
+                    {
+                        if(!$Email)
+                        {
+                            $User = new User();
+                            $PassHash = $Encoder->hashPassword($User, $Data['Pass']);
 
-                    $User->setUsername($Data['Username'] );
-                    $User->setEmail($Data['Email']);
-                    $User->setPassword($PassHash);
+                            $User->setUsername($Data['Username']);
+                            $User->setEmail($Data['Email']);
+                            $User->setPassword($PassHash);
 
-                    $Manager->persist($User);
-                    $Manager->flush();
+                            $Manager->persist($User);
+                            $Manager->flush();
+                        }
+                        else
+                        {
+                            $Msg = "An account already exists with this email address.";
+                            $StatusCode = 400;
+                        }
+                    } else {
+                        $Msg = "Ehe email address is not valid";
+                        $StatusCode = 400;
+                    }
                 }
                 else
                 {
-                    $Msg = "l'adresse email n'est pas valide.";
+                    $Msg = "This username is already taken.";
                     $StatusCode = 400;
                 }
 
             }
             else
             {
-              $Msg = "Le nom d'utilisateur doit contenir au moins 4 caractères sans caractère special";
+              $Msg = "Username must contain at least 4 characters without special character.";
               $StatusCode = 400;
             }
         }
         else
         {
-            $Msg = "Tous les champs doivent êtres renseignés.";
+            $Msg = "All fields must be filled in.";
             $StatusCode = 400;
         }
 
 
-        return $this->json([
-            'message' => $Msg
-        ], $StatusCode);
+        return $this->json(['message' => $Msg], $StatusCode);
     }
 
 

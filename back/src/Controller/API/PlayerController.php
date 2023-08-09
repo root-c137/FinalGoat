@@ -50,6 +50,7 @@ class PlayerController extends AbstractController
 
         return $this->json([
             "message" => $Msg,
+            "code" => StatusCode,
             "data" => $DataArray
         ], $StatusCode);
     }

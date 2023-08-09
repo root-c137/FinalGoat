@@ -1,6 +1,8 @@
 
 import './Header.css';
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import {EasyFetch} from "../../Utils/EasyFetch";
 
 
 function dateDiff(date1, date2){
@@ -28,6 +30,7 @@ export const Header = () => {
     const DayLimit = 3;
     const DateLimit = new Date("2024-08-03 00:00:00");
     const [DateDiff, setDateDiff] = useState("" );
+    const Username = localStorage.getItem("Username");
 
     useEffect(() =>
     {
@@ -36,11 +39,29 @@ export const Header = () => {
             const Diff = dateDiff(new Date(), DateLimit);
             setDateDiff(Diff.day+" days "+Diff.hour+" hours "+Diff.min+" minutes "+Diff.sec+" seconds");
         }, 1000);
+
+
     });
+
+    const logOut = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("Username");
+        localStorage.removeItem("Email");
+        localStorage.removeItem("Vote");
+    }
 
     return(
         <header>
-            <h1 className="Title">Final goat</h1>
+            <h1 className="Title"><Link to="/">Final goat</Link></h1>
+            {Username ?
+                <div className="Right">
+                    <span className="Right__Username">{Username}</span>
+                    <button onClick={logOut} className="ButtonLogin Right__LogOut" ><i className="fa-solid fa-right-from-bracket"></i></button>
+                </div>
+                :
+                <Link to="/login" className="ButtonLogin Right" ><i className="fa-solid fa-right-to-bracket"></i></Link>
+            }
+
             <h2 className="SubTitle">
                 <span>You still have :</span>
                 <span className="Timeout">{DateDiff}</span>
