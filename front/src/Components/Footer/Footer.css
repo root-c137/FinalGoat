@@ -7,7 +7,7 @@ footer
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding:50px;
+    padding:20px;
     margin-top:50px;
     font-size: 0.5rem;
 }
@@ -30,7 +30,7 @@ footer p
 .fa-twitter
 {
     color: #EEEDED;
-    font-size: 15px;
+    font-size: 10px;
     margin-left: 5px;
 }
 

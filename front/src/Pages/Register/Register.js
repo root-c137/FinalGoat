@@ -108,6 +108,7 @@ export const Register = () => {
                     onChange={e => { setPass(e.target.value); e.currentTarget.className = "FormInput"}} value={Pass}/>
                 </div>
 
+                <div className="h-captcha" data-sitekey="9217bd61-6be8-4e3c-9c71-533f87e98515"></div>
                 <button className="Button" onClick={handleClick}>GO</button>
             </form>
             <Link to="/login" className="BRegister">or login</Link>

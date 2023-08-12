@@ -4,6 +4,7 @@ namespace App\Controller\API;
 
 use App\Entity\Player;
 use App\Entity\Vote;
+use App\Utils\FormateDate;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,7 +39,16 @@ class VoteController extends AbstractController
                 {
                     if($this->getUser()->getVote())
                     {
-                        $this->getUser()->getVote()->setPlayer($Player);
+                        if($Data['Player'] === $this->getUser()->getVote()->getPlayer()->getLastname() )
+                        {
+                            $Msg = "The current vote is the same as the new vote";
+                            $StatusCode = 500;
+                        }
+                        else
+                        {
+                            $this->getUser()->getVote()->setPlayer($Player);
+                            $this->getUser()->getVote()->setUpdatedAt(new \DateTimeImmutable());
+                        }
                     }
                     else
                     {
@@ -47,7 +57,6 @@ class VoteController extends AbstractController
                         $Vote->setUser($this->getUser());
                         $Vote->setCreatedAt(new \DateTimeImmutable());
                         $Vote->setUpdatedAt($Vote->getCreatedAt());
-
                         $Manager->persist($Vote);
                     }
 
@@ -87,6 +96,48 @@ class VoteController extends AbstractController
             'data' => $Data
         ], $StatusCode);
     }
+
+    #[Route('/lastvotes', name: 'lastvotes')]
+    public function LastVotes(): JsonResponse
+    {
+
+        $StatusCode = 200;
+        $Msg = "Ok";
+        $VoteRepo = $this->Doc->getRepository(Vote::class);
+        $Votes = $VoteRepo->findBy([], ['UpdatedAt' => 'DESC'], 10, 0);
+
+        $VotesArray = [];
+        foreach($Votes as $K => $V)
+        {
+            $UpdateOrFirst = "FIRST";
+
+            if($V->getUpdatedAt() !== $V->getCreatedAt())
+                $UpdateOrFirst = "UPDATE";
+
+            $CreatedAtDateTime = $V->getCreatedAt();
+            if($UpdateOrFirst === "UPDATE");
+            $CreatedAtDateTime = $V->getUpdatedAt();
+
+            $Now = new \DateTimeImmutable();
+            $CreatedAtInSecondsFormat = $Now->format('U') - $CreatedAtDateTime->format('U');
+
+            $FormateDate = new FormateDate();
+            $CreatedAt = $FormateDate->FormateCreatedAt($CreatedAtInSecondsFormat);
+
+            $VotesArray[] = [
+                "Username" => $V->getUser() === null ? "" : $V->getUser()->getUsername(),
+                "Vote" => $V->getPlayer()->getLastname(),
+                "CreatedAt" => $CreatedAt
+            ];
+        }
+
+        return $this->json([
+            'data' => $VotesArray,
+            'message' => $Msg
+        ], $StatusCode);
+    }
+
+
 
 
 }

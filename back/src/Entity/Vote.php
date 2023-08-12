@@ -21,7 +21,7 @@ class Vote
     #[ORM\Column]
     private ?\DateTimeImmutable $CreatedAt = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $UpdatedAt = null;
 
     #[ORM\OneToOne(mappedBy: 'Vote', cascade: ['persist', 'remove'])]

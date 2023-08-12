@@ -9,14 +9,20 @@ import {EasyFetch} from "../../Utils/EasyFetch";
 
 export const FormVote = ({refresh}) =>
 {
-    const [currentPlayer, setCurrentPlayer] = useState(null);
+    const [currentPlayer, setCurrentPlayer] = useState(localStorage.getItem("Cv") );
     const Navigate = useNavigate();
-    const [CurrentVote, setCurrentVote] = useState(null);
+    const [CurrentVote, setCurrentVote] = useState(localStorage.getItem("Cv") );
+    const [disabledButton, setDisabledButton] = useState(true);
 
     useEffect(() =>
     {
-        setCurrentVote(localStorage.getItem("Cv") );
+        if(CurrentVote === currentPlayer) {
+            setDisabledButton(true)
+        }
+        else
+            setDisabledButton(false);
     });
+
     const Vote = (e) =>
     {
         e.preventDefault();
@@ -26,17 +32,21 @@ export const FormVote = ({refresh}) =>
         }
         else
         {
-            const Method = "POST";
-            const URL = "api/vote";
-            const Data = {"Player" : currentPlayer,};
+            if(localStorage.getItem("Cv") !== currentPlayer)
+            {
+                const Method = "POST";
+                const URL = "api/vote";
+                const Data = {"Player": currentPlayer,};
 
-            EasyFetch(URL, Data, Method, localStorage.getItem("token") ).then(res => {
-                if(res.message === "Ok"){
-                    localStorage.setItem("Cv", currentPlayer);
-                    setCurrentVote(localStorage.getItem("Cv") );
-                    refresh();
-                }
-            })
+                EasyFetch(URL, Data, Method, localStorage.getItem("token")).then(res => {
+                    if (res.message === "Ok") {
+                        localStorage.setItem("Cv", currentPlayer);
+                        setCurrentVote(localStorage.getItem("Cv"));
+                        refresh();
+                    }
+                })
+            }
+
         }
     }
 
@@ -46,15 +56,16 @@ export const FormVote = ({refresh}) =>
                 <form className="FormVote">
                     <input type="radio" name="Choice" id="Messi"/>
                     <label htmlFor="Messi" className={`LabelMessi ${currentPlayer === "Messi" ? "CurrentVote" : ""}`}
-                           onClick={() => setCurrentPlayer("Messi")}>10 L.Messi
+                           onClick={() => setCurrentPlayer("Messi") }>10 L.Messi
                         {localStorage.getItem("Cv") === "Messi" && <i className="fa-solid fa-check"></i>}
                     </label>
                     <input type="radio" name="Choice" id="CR7" />
                     <label htmlFor="CR7" className={`LabelRonaldo ${currentPlayer === "Ronaldo" ? "CurrentVote" : ""}`}
-                           onClick={() => setCurrentPlayer("Ronaldo")}>7 C.Ronaldo
+                           onClick={() =>setCurrentPlayer("Ronaldo")}>7 C.Ronaldo
                         {localStorage.getItem("Cv") === "Ronaldo" && <i className="fa-solid fa-check"></i>}
                     </label>
-                    <button className="BVote" onClick={Vote}>Vote</button>
+
+                    <button className="BVote" onClick={Vote}  disabled={disabledButton}>Vote</button>
                 </form>
 
         </>

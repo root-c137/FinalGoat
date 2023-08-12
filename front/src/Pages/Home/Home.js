@@ -5,17 +5,21 @@ import {VoteBar} from "../../Components/VoteBar/VoteBar";
 import {FormVote} from "../../Components/FormVote/FormVote";
 import {useEffect, useState} from "react";
 import {EasyFetch} from "../../Utils/EasyFetch";
+import {Historic} from "../../Components/Historic/Historic";
 
 export const Home = () =>
 {
     const [VotesTotal, setVotesTotal] = useState();
     const [MessiVotes, setMessiVotes] = useState(0);
     const [RonaldoVotes, setRonaldoVotes] = useState(0);
+    const [historic, setHistoric] = useState(null);
+
 
     useEffect(() => {
        getVotes();
        getVotesPlayers();
-    });
+       getHistoric();
+    }, []);
 
     const getVotes = () =>
     {
@@ -23,9 +27,9 @@ export const Home = () =>
         const Method = "GET";
 
         EasyFetch(URL, null, Method).then(res => {
-            console.log(res.data);
             setVotesTotal(res.data);
         });
+
     }
 
     const getVotesPlayers = () => {
@@ -41,9 +45,22 @@ export const Home = () =>
         });
     }
 
+    const getHistoric = () =>
+    {
+        const URL = "lastvotes";
+        const Method = "GET";
+
+        EasyFetch(URL, null, Method).then(res => {
+            if(res.message === "Ok")
+                setHistoric(res.data);
+        });
+    }
+
+
     const refresh = () => {
         getVotes();
         getVotesPlayers();
+        getHistoric();
     }
 
     return(
@@ -51,6 +68,7 @@ export const Home = () =>
             <p className="Votes">{VotesTotal} {VotesTotal > 1 ? "votes" : "vote"}</p>
             <VoteBar MessiVotes={MessiVotes} RonaldoVotes={RonaldoVotes} Total={VotesTotal}/>
             <FormVote refresh={refresh} />
+            <Historic historic={historic}/>
         </main>
     )
 }

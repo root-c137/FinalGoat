@@ -4,3 +4,13 @@
 {
     color: #272829;
 }
+
+.h-captcha
+{
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}

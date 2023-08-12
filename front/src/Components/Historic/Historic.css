@@ -1,0 +1,106 @@
+
+
+
+.Historic, .Historic__List, .Historic__Card
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Historic
+{
+    width: 90%;
+    max-height: 585px;
+    margin-top: 100px;
+    background-color: #EEEDED;
+    color: #272829;
+    border-radius: 10px;
+}
+
+.Historic__Tuto
+{
+    font-size: 0.6rem;
+}
+
+.Historic__List
+{
+    width:100%;
+    margin-top: 0;
+    padding-top: 20px;
+}
+
+.Historic__Card
+{
+    width:90%;
+    max-width: 90%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    font-size: 0.7rem;
+    border-bottom:1px solid lightgray;
+    line-height: 1px;
+    font-family: "Ubuntu", sans-serif;
+    justify-content: flex-start;
+    position: relative;
+    padding:10px;
+}
+.Historic__Card span
+{
+    padding:10px;
+}
+.Historic__Card .Date
+{
+    font-size: 0.5rem;
+    position: absolute;
+    right:10px;
+    top:50%;
+    transform : translate(0, -50%);
+}
+.Historic__Card .Username
+{
+    font-weight: bold;
+}
+
+.fa-arrow-right
+{
+    color : #6fba82;
+}
+.fa-arrow-right-update
+{
+    color : #5073b8;
+}
+
+
+table, tbody, table tr
+{
+    width:100%;
+    margin:auto;
+}
+
+table td
+{
+    width: calc(100% / 4);
+}
+
+@media screen and (min-width: 600px)
+{
+    .Historic__Card
+    {
+        font-size: 0.9rem;
+    }
+    .Historic__Card .Date
+    {
+        font-size: 0.7rem;
+    }
+
+}
+
+@media screen and (min-width: 1000px)
+{
+    .Historic
+    {
+        width:550px;
+    }
+
+}

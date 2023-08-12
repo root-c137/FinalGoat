@@ -41,6 +41,8 @@ export const Reset = () =>
                 }
             });
         }
+        else
+            setNoticeMsg("Enter your e-mail adress.")
     }
 
 

@@ -77,6 +77,7 @@ export const Header = () => {
                 <span>You still have</span>
                 <div className="CountDown">
                     <table>
+                        <tbody>
                         <tr className="CountDown__Table__Tr">
                             <td className="CountDown__Table__Title">days</td>
                             <td className="CountDown__Table__Title">hours</td>
@@ -89,6 +90,7 @@ export const Header = () => {
                             <td className="CountDown__Table__Value">{Minutes}</td>
                             <td className="CountDown__Table__Value">{Seconds}</td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
                 <span className="Timeout">{DateDiff}</span>

@@ -47,13 +47,14 @@
     font-weight: bold;
     border:none;
     outline:none;
-    cursor: pointer;
 }
-.BVote:hover
+.BVote:hover:enabled
 {
     color: #EEEDED;
     background-color: #9F0D7F;
+    cursor: pointer;
 }
+
 
 .CurrentVote
 {
@@ -64,10 +65,11 @@
 {
     font-size: 30px;
     position:absolute;
-    right:50px;
+    right:15px;
     top:50%;
     transform: translate(0, -50%);
 }
+
 
 
 @media screen and (min-width: 1000px)
