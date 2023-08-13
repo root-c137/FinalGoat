@@ -33,7 +33,7 @@
 
 .Historic__Card
 {
-    width:90%;
+    width:100%;
     max-width: 90%;
     flex-wrap: wrap;
     flex-direction: row;
@@ -42,46 +42,51 @@
     line-height: 1px;
     font-family: "Ubuntu", sans-serif;
     justify-content: flex-start;
+    align-items: center;
     position: relative;
-    padding:10px;
+    padding:10px 0px;
 }
-.Historic__Card span
+
+.Historic__Card .Left
 {
-    padding:10px;
+    width:85%;
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: center;
 }
+.Historic__Card .Left div
+{
+    width:30%;
+}
+
 .Historic__Card .Date
 {
     font-size: 0.5rem;
-    position: absolute;
-    right:10px;
-    top:50%;
-    transform : translate(0, -50%);
 }
 .Historic__Card .Username
 {
     font-weight: bold;
 }
-
+.Historic__Card .Vote
+{
+    padding-left: 10px;
+}
 .fa-arrow-right
 {
     color : #6fba82;
+    padding-left:10px;
 }
 .fa-arrow-right-update
 {
     color : #5073b8;
 }
 
-
-table, tbody, table tr
+.fa-clock
 {
-    width:100%;
-    margin:auto;
+    padding-right: 5px;
 }
 
-table td
-{
-    width: calc(100% / 4);
-}
 
 @media screen and (min-width: 600px)
 {

@@ -10,6 +10,7 @@ import {Register} from "./Pages/Register/Register";
 import {Login} from "./Pages/Login/Login";
 import {Reset} from "./Pages/Reset/Reset";
 import {Footer} from "./Components/Footer/Footer";
+import {Account} from "./Pages/Account/Account";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
               <Route path="/login" element={<Login />}/>
               <Route path="/register" element={<Register />}/>
               <Route path="/reset" element={<Reset/>}/>
+              <Route path="/account" element={<Account/>}/>
           </Routes>
           <Footer />
       </BrowserRouter>

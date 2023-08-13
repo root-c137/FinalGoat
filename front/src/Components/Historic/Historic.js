@@ -15,24 +15,23 @@ export const Historic = ({historic}) =>
                 <p><i className="fa-solid fa-arrow-right"></i> = First vote</p>
                 <p><i className="fa-solid fa-arrow-right fa-arrow-right-update"></i> = Update vote</p>
             </div>
-            <table className="Historic__List">
-                <tbody>
+            <div className="Historic__List">
                 {
                     historic?.map((Item, key) => {
                         return (
-                        <tr key={key} className="Historic__Card">
-                            <td><span className="Username">{Item.Username }</span></td>
-                            <td><i className="fa-solid fa-arrow-right"></i></td>
-                            <td><span className="Vote">{Item.Vote}</span></td>
-                            <td><span className="Date"><i className="fa-solid fa-clock"></i> {Item.CreatedAt}</span></td>
-
-                        </tr>
+                        <div key={key} className="Historic__Card">
+                            <div className="Left">
+                                <div className="Username">@{Item.Username}</div>
+                                <div><i className={`fa-solid fa-arrow-right ${Item.UpdateOrFirst === "UPDATE" ? "fa-arrow-right-update" : ""}`}></i></div>
+                                <div className="Vote">{Item.Vote}</div>
+                            </div>
+                            <div className="Date"><i className="fa-solid fa-clock"></i>{Item.CreatedAt}</div>
+                        </div>
                         )
                     })
                 }
 
-                </tbody>
-            </table>
+            </div>
         </div>
     );
 }

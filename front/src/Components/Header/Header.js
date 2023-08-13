@@ -66,7 +66,9 @@ export const Header = () => {
             <h1 className="Title"><Link to="/">Final goat</Link></h1>
             {Username ?
                 <div className="Right">
-                    <span className="Right__Username">{Username}</span>
+                    <Link className="Right__Username" to="/account">
+                        <span><i className="fa-solid fa-user"></i>{Username}</span>
+                    </Link>
                     <button onClick={logOut} className="ButtonLogin Right__LogOut" ><i className="fa-solid fa-right-from-bracket"></i></button>
                 </div>
                 :

@@ -109,10 +109,10 @@ class VoteController extends AbstractController
         $VotesArray = [];
         foreach($Votes as $K => $V)
         {
-            $UpdateOrFirst = "FIRST";
+            $UpdateOrFirst = "UPDATE";
 
-            if($V->getUpdatedAt() !== $V->getCreatedAt())
-                $UpdateOrFirst = "UPDATE";
+            if($V->getUpdatedAt()->format("U") === $V->getCreatedAt()->format("U"))
+                $UpdateOrFirst = "FIRST";
 
             $CreatedAtDateTime = $V->getCreatedAt();
             if($UpdateOrFirst === "UPDATE");
@@ -127,7 +127,8 @@ class VoteController extends AbstractController
             $VotesArray[] = [
                 "Username" => $V->getUser() === null ? "" : $V->getUser()->getUsername(),
                 "Vote" => $V->getPlayer()->getLastname(),
-                "CreatedAt" => $CreatedAt
+                "CreatedAt" => $CreatedAt,
+                "UpdateOrFirst" => $UpdateOrFirst
             ];
         }
 

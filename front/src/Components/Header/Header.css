@@ -48,6 +48,12 @@ header
 {
     margin-right: 40px;
     font-size: 0.7rem;
+    text-decoration: none;
+    color: #EEEDED;
+}
+.fa-user
+{
+    margin-right: 5px;
 }
 .ButtonLogin
 {
