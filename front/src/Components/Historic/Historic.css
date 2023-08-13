@@ -11,12 +11,13 @@
 
 .Historic
 {
-    width: 90%;
+    width: 95%;
     max-height: 585px;
     margin-top: 100px;
     background-color: #EEEDED;
     color: #272829;
     border-radius: 10px;
+    padding:5px;
 }
 
 .Historic__Tuto
@@ -34,7 +35,7 @@
 .Historic__Card
 {
     width:100%;
-    max-width: 90%;
+    max-width: 100%;
     flex-wrap: wrap;
     flex-direction: row;
     font-size: 0.7rem;
@@ -49,7 +50,7 @@
 
 .Historic__Card .Left
 {
-    width:85%;
+    width:80%;
     display: flex;
     flex-direction:row;
     justify-content: flex-start;
@@ -75,7 +76,7 @@
 .fa-arrow-right
 {
     color : #6fba82;
-    padding-left:10px;
+    padding-left:30px;
 }
 .fa-arrow-right-update
 {
