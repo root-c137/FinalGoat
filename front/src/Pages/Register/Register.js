@@ -14,11 +14,12 @@ export const Register = () => {
     const [UsernameError, setUsernameError] = useState(false);
     const [EmailError, setEmailError] = useState(false);
     const [PassError, setPassError] = useState(false);
+    const [Captcha, setCaptcha] = useState(null);
+    const Captcha_PublicKey = "705df8d3-8285-46c0-a88a-6fc9c072065c";
     const Navigate = useNavigate();
 
-    const handleClick = (e) =>
+    const Register = (e) =>
     {
-        e.preventDefault();
         clearCurrentError();
 
         setNotice("");
@@ -30,10 +31,12 @@ export const Register = () => {
                 Pass: Pass
             };
 
-
+            console.log(Data);
             const URL = "register";
             EasyFetch(URL, Data,  "POST").then((res) => {
                 setNotice(res.message);
+                console.log(res);
+
                 switch(res.message)
                 {
                     case "An account already exists with this email address." :
@@ -69,6 +72,27 @@ export const Register = () => {
     }
 
 
+    const CheckCaptcha = (e) => {
+        e.preventDefault();
+
+        if(e.target[4]?.value) {
+            console.log("check...");
+            const URL = "verify_captcha";
+            const Method = "POST";
+            const CaptchaResponse = e.target[4].value;
+
+            const Data = {"h-captcha-response": CaptchaResponse + '...'};
+            EasyFetch(URL, Data, Method).then(res => {
+                if(res.message === "Ok")
+                    Register();
+            });
+        }
+        else
+            Register();
+
+    }
+
+
 
     const clearCurrentError = () =>
     {
@@ -89,7 +113,7 @@ export const Register = () => {
 
             <Notice notice={notice}/>
 
-            <form className="Form">
+            <form className="Form" onSubmit={CheckCaptcha} method="post">
                 <div className="FormGroup">
                     <label htmlFor="Username" className="FormLabel">Username</label>
                     <input className={UsernameError ? "FormInput CurrentError" : "FormInput"}
@@ -108,8 +132,8 @@ export const Register = () => {
                     onChange={e => { setPass(e.target.value); e.currentTarget.className = "FormInput"}} value={Pass}/>
                 </div>
 
-                <div className="h-captcha" data-sitekey="9217bd61-6be8-4e3c-9c71-533f87e98515"></div>
-                <button className="Button" onClick={handleClick}>GO</button>
+                <div className="h-captcha" data-sitekey={Captcha_PublicKey} onChange={e => setCaptcha(e.target.value)} ></div>
+                <button type="submit" className="Button" >GO</button>
             </form>
             <Link to="/login" className="BRegister">or login</Link>
 

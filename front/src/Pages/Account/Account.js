@@ -2,7 +2,8 @@
 
 import "./Account.css";
 import {FormUser} from "../../Components/FormUser/FormUser";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {EasyFetch} from "../../Utils/EasyFetch";
 
 export const Account = () =>
 {
@@ -10,22 +11,23 @@ export const Account = () =>
     const [showEmailInput, setShowEmailInput] = useState(false);
     const [showPassInput, setShowPassInput] = useState(false);
 
+
     return(
         <div className="Account">
             <h3>Account</h3>
-            <h4>Your vote : Messi</h4>
+            <h4>Your vote : {localStorage.getItem('Cv') !== 'null' ? localStorage.getItem('Cv') : 'you did not vote'}</h4>
 
             <table className="InfosAndForm">
                 <tbody>
-                    <tr className="InfosGroup">
+                    <tr className="InfosG">
                         <td className="Label">Username</td>
                         <td>{localStorage.getItem("Username")}</td>
                     </tr>
-                    <tr className="InfosGroup">
+                    <tr className="InfosG">
                         <td className="Label">Email</td>
                         <td>{localStorage.getItem("Email")}</td>
                     </tr>
-                    <tr className="InfosGroup">
+                    <tr className="InfosG">
                         <td className="Label">Password</td>
                         <td>******</td>
                     </tr>

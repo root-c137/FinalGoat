@@ -23,7 +23,7 @@ export const Historic = ({historic}) =>
                             <div className="Left">
                                 <div className="Username">@{Item.Username}</div>
                                 <div><i className={`fa-solid fa-arrow-right ${Item.UpdateOrFirst === "UPDATE" ? "fa-arrow-right-update" : ""}`}></i></div>
-                                <div className="Vote">{Item.Vote}</div>
+                                <div className={Item.Vote === "Messi" ? "Vote Vote--Messi" : "Vote Vote--Ronaldo"}>{Item.Vote}</div>
                             </div>
                             <div className="Date"><i className="fa-solid fa-clock"></i>{Item.CreatedAt}</div>
                         </div>

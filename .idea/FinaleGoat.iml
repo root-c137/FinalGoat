@@ -88,6 +88,8 @@
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/http-factory" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/http-client-contracts" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

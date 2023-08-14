@@ -35,17 +35,17 @@
 .Historic__Card
 {
     width:100%;
+    height:20px;
     max-width: 100%;
     flex-wrap: wrap;
     flex-direction: row;
     font-size: 0.7rem;
     border-bottom:1px solid lightgray;
-    line-height: 1px;
     font-family: "Ubuntu", sans-serif;
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    padding:10px 0px;
+    line-height: 1rem;
 }
 
 .Historic__Card .Left
@@ -71,7 +71,19 @@
 }
 .Historic__Card .Vote
 {
-    padding-left: 10px;
+    height:20px;
+    text-transform: uppercase;
+    color: #EEEDED;
+    border:1px solid #EEEDED;
+    text-align: center;
+}
+.Vote--Ronaldo
+{
+    background-color: mediumvioletred;
+}
+.Vote--Messi
+{
+    background-color: #5073b8;
 }
 .fa-arrow-right
 {

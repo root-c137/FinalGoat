@@ -1,7 +1,7 @@
 
 
 
-.Account, .InfosAndForm, .Account .FormGroup
+.Account
 {
     width:90%;
     background-color: #EEEDED;
@@ -10,8 +10,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:auto;
-
 }
 
 .Account
@@ -20,18 +18,23 @@
     border-radius: 10px;
 }
 
+.Account h4
+{
+    font-size: 0.7rem;
+}
 .InfosAndForm
 {
-    width: 100%;
+    width: 50%;
 }
 
 .InfosAndForm tbody
 {
-    width: 90%;
+    width: 100%;
 }
 
 
-.InfosGroup td
+
+.InfosG td
 {
     width:100%;
     min-width:100%;
@@ -43,8 +46,8 @@
     padding-left: 5px;
 }
 
-.InfosGroup .Label
+.InfosG .Label
 {
-    width:15%;
+    width: 15%;
     text-align: center;
 }
