@@ -90,6 +90,9 @@
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/lock" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/options-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/rate-limiter" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

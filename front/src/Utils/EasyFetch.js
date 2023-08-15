@@ -2,7 +2,11 @@
 
 export const EasyFetch = (Url, Data = null, Method, Token = null) => {
 
-    const BaseURL = "http://localhost:8000/";
+    let BaseURL = "http://localhost:8000/";
+    if(window.location.origin !== "http://localhost:3000")
+        BaseURL = "https://finalgoat.com:8000/";
+
+
     const Body = Data !== null ? JSON.stringify(Data) : [];
     const CurrentUrl = BaseURL+Url;
 
@@ -28,7 +32,7 @@ export const EasyFetch = (Url, Data = null, Method, Token = null) => {
     Init = InitPost;
 
     return fetch(CurrentUrl, Init)
-        .then(res=>  res.json())
+        .then(res =>  res.json())
         .then(res =>  res )
 
 }

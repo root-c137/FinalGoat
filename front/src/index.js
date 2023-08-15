@@ -11,6 +11,7 @@ import {Login} from "./Pages/Login/Login";
 import {Reset} from "./Pages/Reset/Reset";
 import {Footer} from "./Components/Footer/Footer";
 import {Account} from "./Pages/Account/Account";
+import {Page404} from "./Pages/404/Page404";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +24,7 @@ root.render(
               <Route path="/register" element={<Register />}/>
               <Route path="/reset" element={<Reset/>}/>
               <Route path="/account" element={<Account/>}/>
+              <Route path="*" element={<Page404 />}/>
           </Routes>
           <Footer />
       </BrowserRouter>

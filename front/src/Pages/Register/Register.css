@@ -14,3 +14,14 @@
     align-items: center;
     padding:10px;
 }
+
+.NewsLetterLabel
+{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 0.6rem;
+}
+
+#NewsLetter
+{
+    margin-right: 10px;
+}

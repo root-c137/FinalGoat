@@ -14,6 +14,7 @@ export const Register = () => {
     const [UsernameError, setUsernameError] = useState(false);
     const [EmailError, setEmailError] = useState(false);
     const [PassError, setPassError] = useState(false);
+    const [NewsLetter, setNewLetter] = useState(false);
     const [Captcha, setCaptcha] = useState(null);
     const Captcha_PublicKey = "705df8d3-8285-46c0-a88a-6fc9c072065c";
     const Navigate = useNavigate();
@@ -28,7 +29,8 @@ export const Register = () => {
             const Data = {
                 Username: Username,
                 Email: Email,
-                Pass: Pass
+                Pass: Pass,
+                NewsLetter: NewsLetter
             };
 
             console.log(Data);
@@ -130,6 +132,13 @@ export const Register = () => {
                     <label className="FormLabel" htmlFor="Pass">Password</label>
                     <input className={PassError ? "FormInput CurrentError" : "FormInput"} type="password" name="Pass" id="Pass"
                     onChange={e => { setPass(e.target.value); e.currentTarget.className = "FormInput"}} value={Pass}/>
+                </div>
+                <div className="FormGroup">
+                    <input type="checkbox" name="NewsLetter" id="NewsLetter" onChange={() => setNewLetter(!NewsLetter)} />
+                    <label htmlFor="NewsLetter" className="NewsLetterLabel">
+                        Subscribe to the newsletter (to receive by email the results of the
+                        votes and information relating to future products..)
+                    </label>
                 </div>
 
                 <div className="h-captcha" data-sitekey={Captcha_PublicKey} onChange={e => setCaptcha(e.target.value)} ></div>

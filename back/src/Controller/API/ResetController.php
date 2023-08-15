@@ -102,6 +102,7 @@ class ResetController extends AbstractController
                     $StatusCode = 500;
                     $Reset->setAttempt($Reset->getAttempt() + 1);
                     $Manager->flush();
+
                 }
 
             }

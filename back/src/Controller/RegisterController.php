@@ -29,7 +29,7 @@ class RegisterController extends AbstractController
            && !empty($Data['Pass']) )
         {
 
-            if(strlen($Data['Username']) >= 4 &&
+            if(strlen($Data['Username']) >= 4 && strlen($Data['Username']) < 16 &&
             !preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $Data['Username']) )
             {
                 $User = $Manager->getRepository(User::class)->findOneBy(['username' => $Data['Username'] ]);
@@ -47,6 +47,7 @@ class RegisterController extends AbstractController
                             $User->setUsername($Data['Username']);
                             $User->setEmail($Data['Email']);
                             $User->setPassword($PassHash);
+                            $User->setNewsLetterConsent($Data['NewsLetter']);
 
                             $Manager->persist($User);
                             $Manager->flush();
@@ -71,7 +72,7 @@ class RegisterController extends AbstractController
             }
             else
             {
-              $Msg = "Username must contain at least 4 characters without special character.";
+              $Msg = "The username must contain at least 4 characters and a maximum of 15";
               $StatusCode = 400;
             }
         }

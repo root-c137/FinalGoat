@@ -35,6 +35,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Vote $Vote = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $NewsLetterConsent = null;
+
 
 
 
@@ -132,6 +135,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVote(?Vote $Vote): static
     {
         $this->Vote = $Vote;
+
+        return $this;
+    }
+
+    public function isNewsLetterConsent(): ?bool
+    {
+        return $this->NewsLetterConsent;
+    }
+
+    public function setNewsLetterConsent(?bool $NewsLetterConsent): static
+    {
+        $this->NewsLetterConsent = $NewsLetterConsent;
 
         return $this;
     }
