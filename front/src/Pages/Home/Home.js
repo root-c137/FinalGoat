@@ -54,8 +54,6 @@ export const Home = () =>
         EasyFetch(URL, null, Method).then(res => {
             if(res.message === "Ok")
                 setHistoric(res.data);
-
-            console.log(res.data);
         });
     }
 

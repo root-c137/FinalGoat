@@ -12,6 +12,9 @@
     padding:20px;
     font-size: 0.9rem;
     padding-top:50px;
+    margin:auto;
+    background-color: #EEEDED;
+    color: #272829;
 }
 
 .LegalNotice h3
@@ -30,3 +33,11 @@
     color: #EEEDED;
 }
 
+
+@media screen and (min-width: 500px)
+{
+    .LegalNotice
+    {
+        width:400px;
+    }
+}
