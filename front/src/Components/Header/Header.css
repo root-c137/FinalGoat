@@ -99,6 +99,29 @@ header
     font-size: 0.5rem;
 }
 
+.FinalResult p
+{
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 29px;
+    position: relative;
+    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+}
+.GoatName
+{
+    padding:10px;
+    background-color: #EEEDED;
+    color: #272829;
+}
+
+.FinalResult img
+{
+    position: absolute;
+    left:-17px;
+    top:-20px;
+    transform: rotate(-36deg);
+}
+
 @media screen and (min-width: 800px)
 {
     .ButtonLogin

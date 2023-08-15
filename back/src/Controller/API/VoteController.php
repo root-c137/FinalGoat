@@ -138,7 +138,32 @@ class VoteController extends AbstractController
         ], $StatusCode);
     }
 
+    #[Route('/result', name: 'result')]
+    public function FinalResult(EntityManagerInterface $Manager): JsonResponse
+    {
+        $Msg = "Ok";
+        $StatusCode = 200;
+        $Result = 0;
+
+        $PlayerMessi = $Manager->getRepository(Player::class)->findOneBy(['LastName' => 'Messi']);
+        $PlayerRonaldo = $Manager->getRepository(Player::class)->findOneBy(['LastName' => 'Ronaldo']);
+
+
+        $RepVoteMessi = $Manager->getRepository(Vote::class);
+        $MessiVotes = $RepVoteMessi->findBy(['Player' => $PlayerMessi]);
+
+        $RepVoteRonaldo = $Manager->getRepository(Vote::class);
+        $RonaldoVotes = $RepVoteRonaldo->findBy(['Player' => $PlayerRonaldo]);
+
+        $VotesArray = [$MessiVotes, $RonaldoVotes];
+        $Result = max($VotesArray);
+
+        $Result = $Result[0]->getPlayer()->getFirstname().' '.$Result[0]->getPlayer()->getLastname();
+
+        return $this->json(['message' => $Msg, 'data' => $Result], $StatusCode);
+    }
 
 
 
-}
+
+    }

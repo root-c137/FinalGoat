@@ -3,7 +3,9 @@ import './Header.css';
 import {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {EasyFetch} from "../../Utils/EasyFetch";
+import {clear} from "@testing-library/user-event/dist/clear";
 
+import Kingicon from "../Images/king.png";
 
 function dateDiff(date1, date2){
     var diff = {}                           // Initialisation du retour
@@ -28,29 +30,61 @@ export const Header = () => {
     const YearLimit = 2024;
     const MountLimit = 8;
     const DayLimit = 3;
-    const DateLimit = new Date("2024-08-03 00:00:00");
+    const DateLimit = new Date("2024-08-15 00:00:00");
     const [DateDiff, setDateDiff] = useState("" );
     const [Hours, setHours] = useState("");
     const [Minutes, setMinutes] = useState("");
     const [Seconds, setSeconds] = useState("");
+    const [showResult, setShowResult] = useState(true);
+    const [finalResult, setFinalResult] = useState(null);
     const [Days, setDays] = useState("");
     const Username = localStorage.getItem("Username");
     const Navigate = useNavigate();
 
     useEffect(() =>
     {
-        const D = new Date();
-        setInterval(() => {
-            const Diff = dateDiff(new Date(), DateLimit);
-
-            setDays(Diff.day.toString() );
-            setHours(Diff.hour.toString() );
-            setMinutes(Diff.min.toString() );
-            setSeconds(Diff.sec.toString() );
-        }, 1000);
+        const updateCountDown = () =>
+        {
+                const Diff = dateDiff(new Date(), DateLimit);
 
 
-    });
+                if (Diff.day === 0 && Diff.hour === 0 && Diff.min === 0 && Diff.sec === 0)
+                {
+                    clearInterval(intervalID);
+                    getFinalResult();
+                }
+
+                setDays(Diff.day.toString());
+                setHours(Diff.hour.toString());
+                setMinutes(Diff.min.toString());
+                setSeconds(Diff.sec.toString());
+        };
+
+          updateCountDown();
+          const intervalID = setInterval(updateCountDown, 1000);
+
+          return () => {clearInterval(intervalID);}
+    }, []);
+
+
+
+    const getFinalResult = () =>
+    {
+        const URL = "result";
+        const Method = "GET";
+
+        EasyFetch(URL, null, Method).then(res => {
+
+            if(res.message === "Ok")
+            {
+                setFinalResult(res.data);
+                setShowResult(true);
+            }
+        });
+    }
+
+
+
 
     const logOut = () => {
         localStorage.removeItem("token");
@@ -75,28 +109,45 @@ export const Header = () => {
                 <Link to="/login" className="ButtonLogin Right" ><i className="fa-solid fa-right-to-bracket"></i></Link>
             }
 
-            <h2 className="SubTitle">
-                <span>You still have</span>
-                <div className="CountDown">
-                    <table>
-                        <tbody>
-                        <tr className="CountDown__Table__Tr">
-                            <td className="CountDown__Table__Title">days</td>
-                            <td className="CountDown__Table__Title">hours</td>
-                            <td className="CountDown__Table__Title">minutes</td>
-                            <td className="CountDown__Table__Title">seconds</td>
-                        </tr>
-                        <tr className="CountDown__Table__Tr">
-                            <td className="CountDown__Table__Value">{Days}</td>
-                            <td className="CountDown__Table__Value">{Hours}</td>
-                            <td className="CountDown__Table__Value">{Minutes}</td>
-                            <td className="CountDown__Table__Value">{Seconds}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <span className="Timeout">{DateDiff}</span>
-            </h2>
+            {
+                showResult ?
+                    <div className="FinalResult">
+                        <p>Official !</p>
+                        <p>THE GOAT IS</p>
+
+                        <p className="GoatName">
+                            <img className="KingIcon" src={Kingicon} />
+                            Lionel messi{finalResult}
+                        </p>
+                    </div>
+
+                    :
+
+                    <div className="CountDown">
+                        <h2 className="SubTitle">You still have</h2>
+
+                        <table>
+                            <tbody>
+                            <tr className="CountDown__Table__Tr">
+                                <td className="CountDown__Table__Title">days</td>
+                                <td className="CountDown__Table__Title">hours</td>
+                                <td className="CountDown__Table__Title">minutes</td>
+                                <td className="CountDown__Table__Title">seconds</td>
+                            </tr>
+                            <tr className="CountDown__Table__Tr">
+                                <td className="CountDown__Table__Value">{Days}</td>
+                                <td className="CountDown__Table__Value">{Hours}</td>
+                                <td className="CountDown__Table__Value">{Minutes}</td>
+                                <td className="CountDown__Table__Value">{Seconds}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+            }
+
+
+
         </header>
     )
 }
