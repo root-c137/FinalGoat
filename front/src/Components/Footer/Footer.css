@@ -1,30 +1,35 @@
 
 
-footer
+footer, .Footer__Menu
 {
     width:100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding:20px;
     margin-top:50px;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
+    font-family: "Ubuntu", sans-serif;
 }
 
 .Footer__Link
 {
     text-decoration: none;
     color: #fff;
+    margin:5px;
 }
+
 .Footer__Link:hover
 {
     color: #5073b8;
 }
 
-footer p
+.Footer__Menu
 {
-    margin:10px;
+    padding:0;
+    margin-top:0;
+    flex-direction: row;
 }
 
 .fa-twitter
@@ -34,7 +39,23 @@ footer p
     margin-left: 5px;
 }
 
+.Copyright
+{
+    width:100%;
+    text-align: center;
+    padding-top: 20px;
+}
+.Author
+{
+    font-size: 0.8rem;
+}
+
 .Footer__Link:hover .fa-twitter
 {
     color: #5073b8;
+}
+
+.AuthLink
+{
+    color: #ff79c6;
 }

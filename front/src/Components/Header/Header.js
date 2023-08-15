@@ -35,7 +35,7 @@ export const Header = () => {
     const [Hours, setHours] = useState("");
     const [Minutes, setMinutes] = useState("");
     const [Seconds, setSeconds] = useState("");
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [finalResult, setFinalResult] = useState(null);
     const [Days, setDays] = useState("");
     const Username = localStorage.getItem("Username");

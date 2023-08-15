@@ -1,0 +1,15 @@
+
+
+.Privacy
+{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "Ubuntu", sans-serif;
+    padding:20px;
+    font-size: 0.9rem;
+    padding-top:50px;
+}
+

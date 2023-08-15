@@ -12,6 +12,8 @@ import {Reset} from "./Pages/Reset/Reset";
 import {Footer} from "./Components/Footer/Footer";
 import {Account} from "./Pages/Account/Account";
 import {Page404} from "./Pages/404/Page404";
+import {LegalNotice} from "./Pages/Legalnotice/LegalNotice";
+import {PrivacyPolicy} from "./Pages/PrivacyPolicy/PrivacyPolicy";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +26,8 @@ root.render(
               <Route path="/register" element={<Register />}/>
               <Route path="/reset" element={<Reset/>}/>
               <Route path="/account" element={<Account/>}/>
+              <Route path="/legal-notice" element={<LegalNotice />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="*" element={<Page404 />}/>
           </Routes>
           <Footer />
