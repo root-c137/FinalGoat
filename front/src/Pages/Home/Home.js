@@ -13,6 +13,7 @@ export const Home = () =>
     const [MessiVotes, setMessiVotes] = useState(0);
     const [RonaldoVotes, setRonaldoVotes] = useState(0);
     const [historic, setHistoric] = useState(null);
+    const [currentGoat, setCurrentGoat] = useState(null);
 
 
     useEffect(() => {
@@ -68,7 +69,7 @@ export const Home = () =>
         <main className="Home">
             <p className="Votes">{VotesTotal} {VotesTotal > 1 ? "votes" : "vote"}</p>
             <VoteBar MessiVotes={MessiVotes} RonaldoVotes={RonaldoVotes} Total={VotesTotal}/>
-            <FormVote refresh={refresh} />
+            <FormVote refresh={refresh}  />
             <Historic historic={historic}/>
         </main>
     )

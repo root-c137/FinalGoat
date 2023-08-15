@@ -29,9 +29,9 @@ export const Login = () =>
         else {
             EasyFetch(URL, Data, Method).then(res => {
 
-                if (res.message === "Invalid credentials.")
+                if (res?.message === "Invalid credentials.")
                     setNotice("The username and/or password are incorrect.");
-                else if(res.message.split(',')[0] === "Too many failed login attempts")
+                else if(res?.message?.split(',')[0] === "Too many failed login attempts")
                     setNotice(res.message);
                 else
                 {
