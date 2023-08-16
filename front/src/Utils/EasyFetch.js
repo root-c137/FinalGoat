@@ -1,7 +1,7 @@
 
 
-export const EasyFetch = (Url, Data = null, Method, Token = null) => {
-
+export const EasyFetch = (Url, Data = null, Method, Token = null) =>
+{
     let BaseURL = "http://localhost:8000/";
     if(window.location.origin !== "http://localhost:3000")
         BaseURL = "https://finalgoat.com:8000/";
@@ -31,8 +31,19 @@ export const EasyFetch = (Url, Data = null, Method, Token = null) => {
     if(Data)
     Init = InitPost;
 
+
+
     return fetch(CurrentUrl, Init)
-        .then(res =>  res.json())
-        .then(res =>  res )
+        .then(res => res.json())
+        .then(res =>  {
+
+            if(res.message === "Expired JWT Token")
+            {
+                localStorage.clear();
+                window.location.href = "/login";
+            }
+
+            return res;
+        })
 
 }
