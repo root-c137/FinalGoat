@@ -66,8 +66,8 @@ export const Home = () =>
     return(
         <main className="Home">
             <p className="Votes">{VotesTotal} {VotesTotal > 1 ? "votes" : "vote"}</p>
-            <VoteBar MessiVotes={isNaN(MessiVotes) ? 0 : MessiVotes}
-                     RonaldoVotes={isNaN(RonaldoVotes) ? 0 : RonaldoVotes} Total={VotesTotal}/>
+            <VoteBar MessiVotes={MessiVotes}
+                     RonaldoVotes={RonaldoVotes} Total={VotesTotal}/>
             <FormVote refresh={refresh}  />
             <Historic historic={historic}/>
 
