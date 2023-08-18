@@ -75,7 +75,6 @@ export const Register = () => {
         e.preventDefault();
 
         if(e.target[4]?.value) {
-            console.log("check...");
             const URL = "verify_captcha";
             const Method = "POST";
             const CaptchaResponse = e.target[4].value;
