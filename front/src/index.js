@@ -15,6 +15,12 @@ import {Page404} from "./Pages/404/Page404";
 import {LegalNotice} from "./Pages/Legalnotice/LegalNotice";
 import {PrivacyPolicy} from "./Pages/PrivacyPolicy/PrivacyPolicy";
 
+if (process.env.NODE_ENV === 'production') {
+    console.log = () => {}
+    console.error = () => {}
+    console.debug = () => {}
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
