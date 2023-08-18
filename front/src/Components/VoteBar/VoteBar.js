@@ -54,7 +54,8 @@ export const VoteBar = ({MessiVotes, RonaldoVotes, Total}) =>
         }}>
             <div className="NumberAndPourcent NumberAndPourcent--Left">
                 <span className="PlayerNumber">7</span>
-                <span className="Pourcent">({Number(((RonaldoVotes / Total) * 100).toFixed(2)).toString() }%)</span>
+                <span className="Pourcent">({isNaN(Number(((RonaldoVotes / Total) * 100).toFixed(2))) ? 0 :
+                    Number(((RonaldoVotes / Total) * 100).toFixed(2)) }%)</span>
             </div>
         </div>
 
@@ -62,7 +63,8 @@ export const VoteBar = ({MessiVotes, RonaldoVotes, Total}) =>
             width : WidthMessiBar+"%"
         }}>
             <div className="NumberAndPourcent NumberAndPourcent--Right">
-                <span className="Pourcent">({Number(((MessiVotes / Total) * 100).toFixed(2)).toString()}%)</span>
+                <span className="Pourcent">({isNaN(Number(((MessiVotes / Total) * 100).toFixed(2))) ? 0 :
+                    Number(((MessiVotes / Total) * 100).toFixed(2))}%)</span>
                 <span className="PlayerNumber">10</span>
             </div>
         </div>

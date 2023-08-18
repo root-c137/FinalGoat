@@ -80,7 +80,7 @@ export const Register = () => {
             const Method = "POST";
             const CaptchaResponse = e.target[4].value;
 
-            const Data = {"h-captcha-response": CaptchaResponse + '...'};
+            const Data = {"h-captcha-response": CaptchaResponse};
             EasyFetch(URL, Data, Method).then(res => {
                 if(res.message === "Ok")
                     Register();

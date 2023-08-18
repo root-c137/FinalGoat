@@ -13,6 +13,7 @@
     position: relative;
     border:1px solid #fff;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    overflow: hidden;
 }
 
 .VoteBar__Item
@@ -26,7 +27,6 @@
 {
     text-align: right;
     right:0;
-    padding-right: 10px;
     background-color: #5073b8;
 }
 
@@ -34,7 +34,6 @@
 {
     text-align: left;
     left:0px;
-    padding-left: 10px;
     background-color: mediumvioletred;
 }
 
@@ -44,7 +43,7 @@
     width:40px;
     height:40px;
     left:50%;
-    z-index: 10;
+    z-index: 12;
     transition: transform ease-in 0.5s;
 }
 

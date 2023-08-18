@@ -41,7 +41,7 @@ class CaptchaController extends AbstractController
             $StatusCode = 500;
         }
 
-        return $this->json(['message' => 'Ok'], $StatusCode);
+        return $this->json(['message' => $Msg], $StatusCode);
 
     }
 }
