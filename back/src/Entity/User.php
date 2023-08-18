@@ -38,6 +38,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?bool $NewsLetterConsent = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $IP = null;
+
 
 
 
@@ -147,6 +150,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setNewsLetterConsent(?bool $NewsLetterConsent): static
     {
         $this->NewsLetterConsent = $NewsLetterConsent;
+
+        return $this;
+    }
+
+    public function getIP(): ?string
+    {
+        return $this->IP;
+    }
+
+    public function setIP(string $IP): static
+    {
+        $this->IP = $IP;
 
         return $this;
     }

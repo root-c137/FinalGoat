@@ -20,6 +20,7 @@ class RegisterController extends AbstractController
     public function index(Request $Request, EntityManagerInterface $Manager, UserPasswordHasherInterface $Encoder,
                           JWTTokenManagerInterface $JWTManager): JsonResponse
     {
+
         $Data = $Request->toArray();
         $Msg = "Registration was successful !";
         $StatusCode = 200;
@@ -48,6 +49,7 @@ class RegisterController extends AbstractController
                             $User->setEmail($Data['Email']);
                             $User->setPassword($PassHash);
                             $User->setNewsLetterConsent($Data['NewsLetter']);
+                            $User->setIP($_SERVER['REMOTE_ADDR']);
 
                             $Manager->persist($User);
                             $Manager->flush();
