@@ -1,7 +1,7 @@
 
 
 
-.Historic, .Historic__List, .Historic__Card
+.Historic, .Historic__List, .Historic__Card, .Historic__Tuto
 {
     display: flex;
     flex-direction: column;
@@ -20,10 +20,18 @@
     padding:5px;
 }
 
+.Historic h3
+{
+    font-size: 0.9rem;
+}
+
 .Historic__Tuto
 {
     font-size: 0.6rem;
+    align-items: center;
+    text-align: center;
 }
+
 
 .Historic__List
 {
@@ -93,6 +101,11 @@
 .fa-arrow-right-update
 {
     color : #5073b8;
+}
+
+.Historic__Tuto .fa-arrow-right
+{
+    padding-left: 0;
 }
 
 .fa-clock

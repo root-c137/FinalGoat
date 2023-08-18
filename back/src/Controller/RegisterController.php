@@ -72,7 +72,7 @@ class RegisterController extends AbstractController
             }
             else
             {
-              $Msg = "The username must contain at least 4 characters and a maximum of 15";
+              $Msg = "The username must contain at least 4 characters and 15 max. No special characters.";
               $StatusCode = 400;
             }
         }

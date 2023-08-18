@@ -10,10 +10,10 @@ export const Historic = ({historic}) =>
 
     return(
         <div className="Historic">
-            <p>10 last votes</p>
+            <h3>10 last votes</h3>
             <div className="Historic__Tuto">
-                <p><i className="fa-solid fa-arrow-right"></i> = First vote</p>
-                <p><i className="fa-solid fa-arrow-right fa-arrow-right-update"></i> = Update vote</p>
+                <p className="Tuto__Item"><i className="fa-solid fa-arrow-right"></i> = First vote</p>
+                <p className="Tuto__Item"><i className="fa-solid fa-arrow-right fa-arrow-right-update"></i> = Update vote</p>
             </div>
             <div className="Historic__List">
                 {
