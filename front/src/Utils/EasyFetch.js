@@ -4,7 +4,7 @@ export const EasyFetch = (Url, Data = null, Method, Token = null) =>
 {
     let BaseURL = "http://localhost:8000/";
     if(window.location.origin !== "http://localhost:3000")
-        BaseURL = "https://finalgoat.com:8000/";
+        BaseURL = "https://finalgoat.com/FinalGoat/back/public/";
 
 
     const Body = Data !== null ? JSON.stringify(Data) : [];
