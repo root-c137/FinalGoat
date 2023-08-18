@@ -33,11 +33,9 @@ export const Register = () => {
                 NewsLetter: NewsLetter
             };
 
-            console.log(Data);
             const URL = "register";
             EasyFetch(URL, Data,  "POST").then((res) => {
                 setNotice(res.message);
-                console.log(res);
 
                 switch(res.message)
                 {
@@ -57,7 +55,6 @@ export const Register = () => {
 
                 if(res.message === "Registration was successful !")
                 {
-                    console.log(res);
                     clearInput();
                     localStorage.setItem("token", res.token);
                     localStorage.setItem("Username", Username);

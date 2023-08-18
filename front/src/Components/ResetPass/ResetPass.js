@@ -19,13 +19,11 @@ export const ResetPass = ({Email}) =>
 
         if(PassLengthCheck && PassCheck)
         {
-            console.log("check");
             const URL = "reset/resetpassword";
             const Method = "POST";
             const Data = {"PassOne" : PassOne, "PassTwo" : PassTwo, "Email" : Email};
 
             EasyFetch(URL, Data, Method).then(res => {
-                console.log(res);
                 setIsChanged(true);
             });
         }
@@ -37,7 +35,7 @@ export const ResetPass = ({Email}) =>
 
     return(
         <div>
-            <Notice notice={NoticeMsg} />
+            {!isChanged ? <Notice notice={NoticeMsg} /> : ""}
 
             {isChanged ?
                 <div>

@@ -9,7 +9,7 @@ import {Historic} from "../../Components/Historic/Historic";
 
 export const Home = () =>
 {
-    const [VotesTotal, setVotesTotal] = useState();
+    const [VotesTotal, setVotesTotal] = useState(0);
     const [MessiVotes, setMessiVotes] = useState(0);
     const [RonaldoVotes, setRonaldoVotes] = useState(0);
     const [historic, setHistoric] = useState(null);
@@ -66,9 +66,11 @@ export const Home = () =>
     return(
         <main className="Home">
             <p className="Votes">{VotesTotal} {VotesTotal > 1 ? "votes" : "vote"}</p>
-            <VoteBar MessiVotes={MessiVotes} RonaldoVotes={RonaldoVotes} Total={VotesTotal}/>
+            <VoteBar MessiVotes={MessiVotes !== NaN ? MessiVotes : 0}
+                     RonaldoVotes={RonaldoVotes !== NaN ? RonaldoVotes : 0} Total={VotesTotal}/>
             <FormVote refresh={refresh}  />
             <Historic historic={historic}/>
+
         </main>
     )
 }

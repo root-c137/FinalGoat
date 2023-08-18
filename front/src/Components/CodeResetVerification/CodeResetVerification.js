@@ -19,7 +19,6 @@ export const CodeResetVerification = ({Email, showReset}) =>
                 setNoticeMsg(res.message);
             else
             {
-                console.log(res);
                 showReset();
             }
         });

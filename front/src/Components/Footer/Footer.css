@@ -13,6 +13,10 @@ footer, .Footer__Menu
     font-family: "Ubuntu", sans-serif;
 }
 
+footer
+{
+    position:relative;
+}
 .Footer__Link
 {
     text-decoration: none;
@@ -58,4 +62,18 @@ footer, .Footer__Menu
 .AuthLink
 {
     color: #ff79c6;
+}
+
+
+.LinkIcon8
+{
+    position:absolute;
+    right: 5px;
+    bottom : 10px;
+    font-size: 0.4rem;
+}
+.LinkIcon8 a
+{
+    text-decoration: none;
+    color: #EEEDED;
 }

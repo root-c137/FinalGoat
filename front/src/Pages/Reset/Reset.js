@@ -25,10 +25,8 @@ export const Reset = () =>
 
         if(Email.length > 0)
         {
-            console.log("cc");
             EasyFetch(URL, Data, Method).then(res =>
             {
-                console.log(res);
                 if (res.message === "Ok")
                 {
                     setCode(res.data);
@@ -62,7 +60,7 @@ export const Reset = () =>
                     <Notice notice={NoticeMsg}  />
 
                     <p>Enter your email address to receive a link to change your password.</p>
-                    <input type="text" name="Email" id="Email" placeholder="your email.."
+                    <input type="text" name="Email" id="Email"
                            onChange={e => setEmail(e.target.value)} />
                     <button className="BReset" onClick={getCode}>Confirm</button>
             </>

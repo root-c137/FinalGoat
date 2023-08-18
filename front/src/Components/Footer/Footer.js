@@ -18,6 +18,7 @@ export const Footer = () =>
                 <p>finalgoat © All rights reserved</p>
             </div>
 
+            <p className="LinkIcon8"><a target="_blank" href="https://icons8.com/icon/bY5Oe8wOMXY3/ch%C3%A8vre">Chèvre</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
         </footer>
     );
 }

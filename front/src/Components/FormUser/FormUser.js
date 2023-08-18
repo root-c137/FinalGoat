@@ -50,7 +50,6 @@ export const FormUser = () =>
                 if(res.message === "Registration was successful !" || res.message ===
                 "User updated was successful !")
                 {
-                    console.log(res);
                     clearInput();
                     localStorage.setItem("token", res.token);
                     localStorage.setItem("Username", Username);
